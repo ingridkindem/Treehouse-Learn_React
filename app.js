@@ -1,105 +1,73 @@
-const Header = (props) => {
-  return (
+
+//Create a React component as either a JS function or class
+// React components are written in plain JS, with the help of JSX
+function Header(){
+    return (
+        <header>
+            <h1>Scoreboard</h1>
+            <span className="stats">Players: 1</span>
+        </header>
+    );
+}
+
+//Can also write components as arrow functions;
+/*const Header = () =>
     <header>
-      <span className="stats">Players: {props.totalPlayers}</span> 
-      <h1>{ props.title }</h1>
+        <h1>Scoreboard</h1>
+        <span className="stats">Players: 1</span>
+    </header>;
+    */   
+
+
+//JSX expression
+/*
+const header = (
+    <header>
+       <h1 id={myTitleID}>{name}'s First React Element</h1> 
+       <p>{desc}</p>
     </header>
-  );
-}
+);
+*/
 
-class Counter extends React.Component {
-  
-  state = { 
-    score: 100 
-  };
-  
-  incrementScore() {
-    this.setState( prevState => ({ 
-      score: prevState.score + 1 
-    }));
-  }
-  
-  decrementScore() {
-    this.setState( prevState => ({ 
-      score: prevState.score - 1 
-    }));
-  }
-
-  render() {
+const Player = () => {
     return (
-      <div className="counter">
-        <button className="counter-action decrement" onClick={() => this.decrementScore()}> - </button>
-        <span className="counter-score"> {this.state.score} </span>
-        <button className="counter-action increment" onClick={() => this.incrementScore()}> + </button>
-      </div>    
+        <div className="player">
+            <span className="player-name">
+                Ingrid
+            </span>
+
+           {/* Composition: component contains another component */} 
+            <Counter />
+
+        </div>
     );
-  }
 }
-  
-const Player= (props) => {
-  return (
-    <div className="player">
-      <span className="player-name">
-        <button className="remove-player" onClick={() => props.removePlayer(props.id)}>✖</button>
-        { props.name }
-      </span>
-
-      <Counter />
-    </div>
-  );
-}
-
-class Application extends React.Component {
-  
-  state = {
-    players: [
-      {
-        name: "Guil",
-        id: 1,
-      },
-      {
-        name: "Treasure",
-        id: 2,    
-      },
-      {
-        name: "Ashley",
-        id: 3,    
-      },
-      {
-        name: "James",
-        id: 4,    
-      }
-    ]
-  };
-        
-  handleRemovePlayer = (id) => {
-    this.setState( prevState => {
-      return {
-        players: prevState.players.filter(p => p.id !== id)
-      }
-    });
-  }
-  
-  render() {
+const Counter = () => {
     return (
-      <div className="scoreboard">
-        <Header 
-          title="My Scoreboard" 
-          totalPlayers={this.state.players.length} 
-        />
-        
-        {/* Players list */}
-        {this.state.players.map( player =>
-          <Player 
-            removePlayer={ this.handleRemovePlayer }      
-            name={player.name}
-            id={player.id}
-            key={player.id.toString()}
-          />
-        )}  
-      </div>
+        <div className="counter">
+            <button className="counter-action decrement"> - </button>
+                <span className="counter-score">35</span>
+            <button className="counter-action increment"> + </button>
+        </div>
     );
-  }
-}  
+}
 
-ReactDOM.render(<Application />, document.getElementById('root'));
+// Ties every component together
+const App = () => {
+    return(
+        <div className="scoreboard">
+            <Header />
+
+            {/* Playera list */}
+            <Player />
+        </div>
+    );
+}
+
+//Not before render that browser creates actuall DOM elements
+//Renders job to interpret element objects and create DOM nodes out of them
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);
+
