@@ -2,6 +2,8 @@
 Online course, [Treehouse](https://teamtreehouse.com), following the [Learn React track](https://teamtreehouse.com/tracks/learn-react). The track contains the topics: React Basics, React Components, Create React App, Context API, React Router, React v16 and Data Fetching in React.
 The README.md contains an overview of the courses in the track, as well as some of my own notes and takeaways from each part.
 
+*Note that the code contains a lot of comments for self-learning, written during the course.*
+
 ## React Basics
 ### *About this course:*
 >React is a JavaScript library for building user interfaces. React makes building and maintaining the user interface of your application faster and easier by breaking it up into smaller, reusable components. It also helps eliminate the complexity that comes with updating your DOM elements when the user interacts with your application.
@@ -12,8 +14,27 @@ The README.md contains an overview of the courses in the track, as well as some 
 - Components
 - Events
 #### First Steps in React
+- React is a JavaScript libary for building user interfaces. React differs from other front end libraries and frameworks in that it focuses on building components and structure in JavaScript, and not in HTML pages or templates. React elements are the smallest building blocks of React apps. 
+- React DOM is the libary that lets React connect to and update the DOM. The 'react-dom' libary provides DOM-specific methods. ReactDOM.render() renders React elements to the DOM(Document Object Model). React does not create actual DOM nodes, it creates objects that describe DOM nodes. React only manages what gets rendered to the DOM via ReactDOM.render. It is the job if render() to interpret the element object and create DOM nodes out of them. 
+- JSX is a special syntax React uses to create elements and use componets, but using JSX is optional. The curly braces in JSX are used to evaluate JavaScript expressions. We can use Babel as a tool to translate JSX into standard JavaScript. 
+
 #### Thinking in Components
+- A component is a piece of UI that you can reuse. Just like you're able to reuse code in JavaScript with functions, a component lets you reuse code that renders a part of your UI. Being able to split your UI code into independent, reusable pieces, and think about each piece in isolation is one the most embraced features of React. React components are written in plain JavaScript, with the help of JSX, and they contain the logic required to display a small part of your UI.
+- JSX lets you define your own tags. A JSX tag can not only represent an HTML element, it can also represent a user-defined component.
+- Components can be written as Arrow Functions. There is no real benefit to writing a component in this way, but it provides a more concise syntax. 
+- When a component contains another component, it is called composition. Composing components is a core principle in React. You will usually have parent components with one or many child components. This gives the parent component the ability to control how its child components are rendered.
+- We usually pass the top-level component to ReactDOM.render().
+- It is necessary to use a capital letter in the components name to differentiate custom components from native DOM elements.
+
 #### Introducing Props
+- Every React component and element can receive a list of attributes called properties. Properties ,or props, are a core concept in React. Components receive data through props, allowing them to be dynamic, customizable and reusable.
+- An important detail to remember about props is that they are "read only", which means that a component can only read the props given to it, never change them. The parent component owns and controls the property values.
+- You pass props to a component via the component's JSX tag at the place where it is used.
+- When you define a component using a function, the function gets one default argument from React - a props object, containg a list of props given to the component. 
+- You can think of props as what React components use to talk to eachother and share information. Props pass data from a header component, down to a child component.
+- Transforming array items with map(): You can use map() to transform each item in an array into something else. Map returns a new array, leaving the original unchanged, with the same number of elements. Written on the form: orgArray.map(orgArray => newArray.someCommand()).
+- React manages what gets rendered to the DOM. In order for this process to be fast and efficient, React needs a way to quickly know which items were changed, added, or removed. For this, React gives elements a special built-in prop named key. A key is a unique identifier that gives React a way to quickly and reliably identify an element in a list. Not all elements need a key prop. Pass a key prop anytime you are creating elements by iterating over an array of items that will be rearranged, added or deleted in your UI.
+
 #### Understanding State
 
 ## React Components
