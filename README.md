@@ -1,4 +1,4 @@
-# Treehouse-Learn_React
+# Treehouse - Learn React
 Online course, [Treehouse](https://teamtreehouse.com), following the [Learn React track](https://teamtreehouse.com/tracks/learn-react). The track contains the topics: React Basics, React Components, Create React App, Context API, React Router, React v16 and Data Fetching in React.
 The README.md contains an overview of the courses in the track, as well as some of my own notes and takeaways from each part.
 
@@ -15,7 +15,7 @@ The README.md contains an overview of the courses in the track, as well as some 
 - Events
 #### First Steps in React
 - React is a JavaScript libary for building user interfaces. React differs from other front end libraries and frameworks in that it focuses on building components and structure in JavaScript, and not in HTML pages or templates. React elements are the smallest building blocks of React apps. 
-- React DOM is the libary that lets React connect to and update the DOM. The 'react-dom' libary provides DOM-specific methods. ReactDOM.render() renders React elements to the DOM(Document Object Model). React does not create actual DOM nodes, it creates objects that describe DOM nodes. React only manages what gets rendered to the DOM via ReactDOM.render. It is the job if render() to interpret the element object and create DOM nodes out of them. 
+- React DOM is the libary that lets React connect to and update the DOM. The 'react-dom' libary provides DOM-specific methods. `ReactDOM.render()` renders React elements to the DOM(Document Object Model). React does not create actual DOM nodes, it creates objects that describe DOM nodes. React only manages what gets rendered to the DOM via ReactDOM.render. It is the job of `render()` to interpret the element object and create DOM nodes out of them. 
 - JSX is a special syntax React uses to create elements and use componets, but using JSX is optional. The curly braces in JSX are used to evaluate JavaScript expressions. We can use Babel as a tool to translate JSX into standard JavaScript. 
 
 #### Thinking in Components
@@ -23,7 +23,7 @@ The README.md contains an overview of the courses in the track, as well as some 
 - JSX lets you define your own tags. A JSX tag can not only represent an HTML element, it can also represent a user-defined component.
 - Components can be written as Arrow Functions. There is no real benefit to writing a component in this way, but it provides a more concise syntax. 
 - When a component contains another component, it is called composition. Composing components is a core principle in React. You will usually have parent components with one or many child components. This gives the parent component the ability to control how its child components are rendered.
-- We usually pass the top-level component to ReactDOM.render().
+- We usually pass the top-level component to `ReactDOM.render()`.
 - It is necessary to use a capital letter in the components name to differentiate custom components from native DOM elements.
 
 #### Introducing Props
@@ -32,10 +32,16 @@ The README.md contains an overview of the courses in the track, as well as some 
 - You pass props to a component via the component's JSX tag at the place where it is used.
 - When you define a component using a function, the function gets one default argument from React - a props object, containg a list of props given to the component. 
 - You can think of props as what React components use to talk to eachother and share information. Props pass data from a header component, down to a child component.
-- Transforming array items with map(): You can use map() to transform each item in an array into something else. Map returns a new array, leaving the original unchanged, with the same number of elements. Written on the form: orgArray.map(orgArray => newArray.someCommand()).
+- Transforming array items with `map()`: You can use `map()` to transform each item in an array into something else. Map returns a new array, leaving the original unchanged, with the same number of elements. Written on the form: `orgArray.map(orgArray => newArray.someCommand())`.
 - React manages what gets rendered to the DOM. In order for this process to be fast and efficient, React needs a way to quickly know which items were changed, added, or removed. For this, React gives elements a special built-in prop named key. A key is a unique identifier that gives React a way to quickly and reliably identify an element in a list. Not all elements need a key prop. Pass a key prop anytime you are creating elements by iterating over an array of items that will be rearranged, added or deleted in your UI.
 
 #### Understanding State
+- In React, "state" is the data you want to track in your app. State is what allows you to create components that are dynamic and interactive, and it's the only data that changes over time.
+- In JavaScript classes, the extends keyword is used to create a subclass, or a child of another class. If we are extending from `React.Component`, which is part of React's API for component class definition, the only method we need to define is called render, in addition to moving the return statement into the render method. JSX expressions must be changed; instead of accessing props with `props.propsname`, classes need to access props with `this.props.propsname`. In class components, props are not accessed through arguments like they are in functional components. Props are a property of the componet itself, so "this" in `this.props.propsname` refers to the component instance. 
+- It is common to create event handlers as a method in the class. In React, state is never modified directly. The only way React allows you to update a component's state is by using its built-in `setState()` method. React does also have built-in events, such as `onClick`, `onChange` and `onSubmit`.
+- When you create a class component that extends from `React.Component`, any custom methods you create are not bound to the component by default. You need to bind your custom methods, so that this refers to the component instance. Example from code: `<button className="counter-action increment" onClick={this.incrementScore.bind(this)}> + </button>`. Can also be written as arrow functions: `<button className="counter-action increment" onClick={() => this.incrementScore()}> + </button>`. If the event handler is defined as an arrow function. An arrow function is automatically bound to the scope which they are defined, and this gets the function bound to the component instance. In the built-in events, we can now both reference and call the function, with `built-inEvents={this.eventHandler}`. Example from the code: `<button className="counter-action increment" onClick={this.incrementScore}> + </button>`.
+- Whenever you need to update state based on previous state, you shouldn't rely on `this.state` to calculate the next state. State updates may be asynchronous, so it may not always lead to the component re-rendering with new data, and could cause state inconsistency. `setState()` accepts a callback function that produces state based on the previous state in a more reliable way.
+- We have different kinds of state, where two of them are Application State and Component State. Application State: Data that is available to the entire app. Component State: State that is specific to a component, and not shared outside of the component. 
 
 ## React Components
 ### *About this course:*
