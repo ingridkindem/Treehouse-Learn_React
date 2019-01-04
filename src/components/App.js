@@ -1,3 +1,5 @@
+import React from 'react';
+
 //Create a React component as either a JS function or class
 // React components are written in plain JS, with the help of JSX
 const Header = (props) => {
@@ -134,8 +136,11 @@ class App extends React.Component {
 //Not before render that browser creates actuall DOM elements
 //Renders job to interpret element objects and create DOM nodes out of them
 // Usally pass the Top-level component to ReactDOM.render()
-ReactDOM.render(
+/*ReactDOM.render(
     <App />,
     document.getElementById('root')
-);
+); */
+
+export default App;
+
 
