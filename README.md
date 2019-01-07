@@ -47,7 +47,20 @@ The README.md contains an overview of the courses in the track, as well as some 
 ### *About this course:*
 >Components are the core building blocks of a React application. This course will level-up your React skills by providing a better understanding of class vs. functional components, state and lifecycle methods, and how to split your UI into reusable and composable components.
 #### Build Modular Interfaces with Components
+- Developers normally use Create React App for developing React applications because it lets you quickly create and run React apps with no configuration. Create React App is well-suited for projects of any size, and often used for developing production-ready apps.
+- When you create a project with Create React App, package.json installs the latest version of React and React-DOM, as well as the latest version of react-scripts, a development dependency that manages all other dev dependencies that run, test and build your app. 
+- ES modules is a feature in JavaScript that lets you break up your code into individual JavaScript files. Modules provide a better way to organize and maintain your code, as well as provide scope for your variables, functions and classes. Anything that we don't export from a file will not be available to other modules in out application - they will be private to this module. 
+
 #### Managing State and Data Flow
+- In React, data naturally flows down the component tree, from the app's top-level component down to the child components, via props. This is called "unidirectional data flow".
+- When two or more components need access to the same state, we move the state into their common parent. This is called "lifting state up".
+- Since data in React flows downward, a child component has no way to directly communicate to its parent. React allows us to use props that are callback functions to communicate data upstream, from a child to a parent. For example, we can write event handlers that manipulate state, and pass them down to component as callback functions. When a child wants to indicate that the application state should change, it will execute the callback function and the parent will know what to do to uodate the data.
+- We want to iterate over each object and state, and will use the `reduce()` method. The reduce method takes a callback function that gets executed on each element in the array.  
+- Form elements work differently from other elements because form elements naturally keep some internal state. In React, we need to handle a form element state explicitly. To manage the input field, we need to build a controlled component. A controlled component renders a form that controls what happens in that form on subsequence user input. Is a form element whose value is controlled by a react with state.
+- Creating a Controlled Component: Initialize state for the value of the input. Then listen for change on the input to detect when a value is updated. Last, create an event handler that updates the value state.
+- We will prevent the forms default behavior, by calling preventDefault on an event object. If we don't prevent the form's default submit behavior, it will result in the browser posting a request back to the server. That will cause our application to reload in the browser, which means that we would lose all of our application state in the process. 
+- When we need to bring in all the existing objects in state, to combine them with a new object being added to state, we can use the spread operator. The spread operator brings in a copy of all the existing objects in state into an updated objects array with `...this.state.objects`. This merges the original objects in the original object state, with the new array being created. That way, we are not modifying or mutating the original players array.
+
 #### Stateful Components and Lifecycle Methods
 #### React Component Patterns
 
