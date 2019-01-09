@@ -67,6 +67,11 @@ componentDidMount is a lifecycle method. Because componentDidMount is immediatel
 - Since components do not always stay in the DOM, React also provides the componentWillUnmount lifecycle method to help you handle unmounting of components. This can help prevent memory leaks in your application.
 
 #### React Component Patterns
+- React provides a special type of component, called PureComponent, that helps prevent unnecessary re-renders. If your component’s render() method renders the same result given the same props and state, you can use PureComponent for a performance boost in some cases.
+- Destruct props to make the components cleaner and easier to understand. It provides a more concise way to write your props. Two ways to destruct props: with a variable assignment or in the functions parameters.
+- Refs let you access and interact with DOM nodes created in the render() method. They make it possible to do the more traditional DOM manipulation, and they're commonly used to access form elements and get their values.
+- Type Checking in React with either [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes), TypeScript or Flow. 
+
 
 ## Using Create React App
 ### *About this workshop:*
