@@ -41,7 +41,7 @@ class App extends Component {
             },
             {
                 name: "Ingrid",
-                score: 0,
+                score: 4,
                 id: 3
             },
             {
@@ -59,6 +59,15 @@ class App extends Component {
         this.setState(prevState => ({
             score: prevState.players[index].score += delta
         }));
+    }
+
+    getHighestScore = () => {
+        const scores = this.state.players.map( p => p.score );
+        const highScore = Math.max(...scores);
+        if (highScore) {
+          return highScore;
+        } 
+        return null;
     }
 
     handleAddPlayer = (name) => {
@@ -87,10 +96,11 @@ class App extends Component {
     }
 
     render() {
+        const highScore = this.getHighestScore();
+
         return (
             <div className="scoreboard">
                 <Header
-                    title="Scoreboard"
                     players={this.state.players}
                 />
 
@@ -104,6 +114,7 @@ class App extends Component {
                         index={index}
                         changeScore={this.handleScoreChange}
                         removePlayer={this.handleRemovePlayer}
+                        isHighScore={highScore === player.score}
                     />
                 )}
 
