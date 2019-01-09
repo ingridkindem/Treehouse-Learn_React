@@ -1,24 +1,48 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Counter from './Counter';
+import Icon from './Icon';
 
-const Player = (props) => {
-    return (
-        <div className="player">
-            <span className="player-name">
-                <button className="remove-player" onClick={() => props.removePlayer(props.id)}>✖</button>
-                {props.name}
-            </span>
+class Player extends PureComponent {
 
-            {/* Composition: component contains another component */}
-            <Counter
-                score={props.score}
-                index={props.index}
-                changeScore={props.changeScore}
-            />
+    static propTypes = {
+        changeScore: PropTypes.func,
+        removePlayer: PropTypes.func,
+        // use isRequired to get warning in console
+        name: PropTypes.string.isRequired,
+        score: PropTypes.number.isRequired,
+        id: PropTypes.number,
+        index: PropTypes.number,
+        isHighScore: PropTypes.bool
+    };
 
+    render() {
+        const {
+            name,
+            id,
+            score,
+            index,
+            changeScore,
+            removePlayer
+        } = this.props;
 
-        </div>
-    );
+        return (
+            <div className="player">
+                <span className="player-name">
+                    <button className="remove-player" onClick={() => removePlayer(id)}>✖</button>
+                    <Icon isHighScore={this.props.isHighScore} />
+                    {name}
+                </span>
+
+                {/* Composition: component contains another component */}
+                <Counter
+                    score={score}
+                    index={index}
+                    changeScore={changeScore}
+                />
+            </div>
+        )
+    };
 }
 
 export default Player;
