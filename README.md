@@ -62,6 +62,10 @@ The README.md contains an overview of the courses in the track, as well as some 
 - When we need to bring in all the existing objects in state, to combine them with a new object being added to state, we can use the spread operator. The spread operator brings in a copy of all the existing objects in state into an updated objects array with `...this.state.objects`. This merges the original objects in the original object state, with the new array being created. That way, we are not modifying or mutating the original players array.
 
 #### Stateful Components and Lifecycle Methods
+- In React, every component instance follows a cycle. It is mounted onto the DOM, it is updated with changes in data, and finally, it is unmounted from the DOM. This is referred to as the component lifecycle. React's built-in lifecycle methods get called at each point in a component's life-cycle. The methods act as hooks you can use to run code at key times in the life-cycle. This gives you the ability to control what happens when a component mounts, updates and unmounts.
+componentDidMount is a lifecycle method. Because componentDidMount is immediately called after a component mounts, it is a convenient hook for setting up timers, fetching data, or anything else you might need to do when your component is mounted into the page.
+- Since components do not always stay in the DOM, React also provides the componentWillUnmount lifecycle method to help you handle unmounting of components. This can help prevent memory leaks in your application.
+
 #### React Component Patterns
 
 ## Using Create React App
