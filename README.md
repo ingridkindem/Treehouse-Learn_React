@@ -77,6 +77,13 @@ componentDidMount is a lifecycle method. Because componentDidMount is immediatel
 ### *About this workshop:*
 >Learn to quickly set up React projects using Create React App.
 #### What is Create React App?
+- Create React App lets you create a modern build setup for your React apps in no time. You install the tool and focus on just building your actual app.
+- In the terminal, enter the folder you want to save your project, then run `npx create-react-app nameOfProject`. Then enter your project, and run `npm start`. Starting the server automatically launches your app in the browser on localhost port 3000.
+- Create-react-app generates only the files you need to start your React project. app.js is currently the main wrapper component of the app, and is located in the source folder. It's importing App.css, which contains styles specific to the app component, and the logo.svg you see at the top of the page. index.js is the entry file for the app. It imports index.css, the app's base stylesheet, and imports and renders the App component into the DOM via the root div located in the index.html file inside the public folder.
+- create-react-app sets up a fully functional offline first progressive web app by default. Progressive web apps, PWAs, are web applications that use a collection of modern web technologies to provide native app-like experiences on all types of devices. What they do is they take advantage of the latest browser features to make your apps more performant, reliable, and safe, even send push notifications, and work when there's no Internet connection available. So progressive web apps rely on special scripts called service workers to give users that app-like experience. And index.js imports and enables a service worker created in the file registerServiceWorker.js. This file caches your static assets and serves them from local cache in production, ensuring that your web app is reliably fast, even on a slower unreliable network. Another key feature in progressive web apps is the web app manifest. The manifest is a JSON file containing metadata associated with your app, like the app's name, author, description, and more. The main purpose of the manifest is to install the app to the home screen of a device, providing your users with quicker access and a richer experience. You'll customize this file with details specific to your web application.
+- [React-Bootstrap](https://react-bootstrap.github.io/) is a framework for integrating bootstrap with React apps.
+
+
 #### Installing and Using Create React App
 #### Customizing Your Project
 #### Next steps with Create React App
