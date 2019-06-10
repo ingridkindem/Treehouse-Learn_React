@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import Header from './Header';
-import Player from './Player';
-import AddPlayerForm from './AddPlayerForm';
+import React, { Component } from "react";
+import { Provider } from "./Context";
+import Header from "./Header";
+import AddPlayerForm from "./AddPlayerForm";
+import PlayerList from "./PlayerList";
 
 //Create a React component as either a JS function or class
 // React components are written in plain JS, with the help of JSX
@@ -26,7 +27,6 @@ const header = (
 
 // Ties every component together
 class App extends Component {
-
     state = {
         players: [
             {
@@ -50,27 +50,27 @@ class App extends Component {
                 id: 4
             }
         ]
-    }
+    };
 
     //player ID counter
     prevPlayerId = 4;
 
     handleScoreChange = (index, delta) => {
         this.setState(prevState => ({
-            score: prevState.players[index].score += delta
+            score: (prevState.players[index].score += delta)
         }));
-    }
+    };
 
     getHighestScore = () => {
-        const scores = this.state.players.map( p => p.score );
+        const scores = this.state.players.map(p => p.score);
         const highScore = Math.max(...scores);
         if (highScore) {
-          return highScore;
-        } 
+            return highScore;
+        }
         return null;
-    }
+    };
 
-    handleAddPlayer = (name) => {
+    handleAddPlayer = name => {
         this.setState(prevState => {
             return {
                 players: [
@@ -78,48 +78,41 @@ class App extends Component {
                     {
                         name,
                         score: 0,
-                        id: this.prevPlayerId += 1
+                        id: (this.prevPlayerId += 1)
                     }
                 ]
             };
-
         });
+    };
 
-    }
-
-    handleRemovePlayer = (id) => {
+    handleRemovePlayer = id => {
         this.setState(prevState => {
             return {
                 players: prevState.players.filter(p => p.id !== id)
             };
         });
-    }
+    };
 
     render() {
-        const highScore = this.getHighestScore();
-
         return (
-            <div className="scoreboard">
-                <Header
-                    players={this.state.players}
-                />
+            <Provider value={{
+                players: this.state.players,
+                actions: {
+                    changeScore: this.handleScoreChange,
+                    removePlayer: this.handleRemovePlayer,
+                    addPlayer: this.handleAddPlayer
 
-                {/* Player list */}
-                {this.state.players.map((player, index) =>
-                    <Player
-                        name={player.name}
-                        score={player.score}
-                        id={player.id}
-                        key={player.id.toString()}
-                        index={index}
-                        changeScore={this.handleScoreChange}
-                        removePlayer={this.handleRemovePlayer}
-                        isHighScore={highScore === player.score}
-                    />
-                )}
+                }
+            }}>
+                <div className="scoreboard">
+                    <Header />
 
-                <AddPlayerForm addPlayer={this.handleAddPlayer} />
-            </div>
+                    {/* Player list */}
+                    <PlayerList/>
+
+                    <AddPlayerForm />
+                </div>
+            </Provider>
         );
     }
 }
@@ -133,5 +126,3 @@ class App extends Component {
 ); */
 
 export default App;
-
-
