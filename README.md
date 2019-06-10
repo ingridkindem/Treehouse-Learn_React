@@ -92,11 +92,27 @@ componentDidMount is a lifecycle method. Because componentDidMount is immediatel
 ### *About this workshop*
 >In the typical React data flow, components communicate with each other via props. A parent passes props down to child components. Sometimes the intermediary components get props passed to them with the sole purpose of passing that data down one (or several) more levels deep. This cascade of props is often referred to as "prop drilling". The React Context API provides a way to pass data to components without having to pass props manually at every single level.
 #### What is the Context API?
+- Prop Drilling = The cascade of props that gets data to parts of the React Component Tree. To come around this problem, we use React Context API that provides a way to pass data down to components without having to pass props manually at every single level
+
 #### How the Context Works
+- Context API has three essensial parts: createContext(), Provider and Consumer.
+- React.createContext(): Sets up the context and returns an object with a Provider and a Consumer, the two main components of the Context API.
+- Provider: Used as high as possible in the component tree. It allows a Conumer to subscribe to context changes.
+- Consumer: Accesses the Provider to get the data it needs. The Consumer is what helps avoid "prop drilling". 
+
 #### Create Context
+- Create a folder in the components folder, named Context. 
+- Add a new index.js file to that folder, and create a context which includes a provider and a consumer. 
+- Wrap the childeren of App in the Provider component.
+
 #### Provide and Consume State
-#### The Provider and Consumer Solution
+- The provider component requires a value prop to share data, and its usually the application state and any action or event handlers shared between components. Any component that is a descant of the provider will hav eaccess to the data given to the value prop. And the way to access that data is with a consumer.
+- The Provider provides the context and a Consumer consumes and subscribes to that context.
+- We add context to the Stats component, by importing consumer. In the functions return statement, we will use the Consumer component. To render anything inside the consumer, you use a pattern called Render Prop.
+- Render Prop refers to a method for sharing code between React Componets using a prop whose value is a function. 
+
 #### Provide and Consume Actions
+- It is common to pass the Provider's vallue prop an object to store multiple properties in state, as well as any actions you want to perform on the data. 
 #### Provide Remaining Actions to Child Components
 #### Refactor the Provider
 #### Refactor the Consumers
